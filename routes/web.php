@@ -3,8 +3,15 @@
 use App\Http\Controllers\EstadoPedidosController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\HomeController;
 use App\Models\EstadoPedidos;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+
+Route::get('', [HomeController::class, 'index'])->name('admin.home');
+
+// RUTA PARA USUARIO
+Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('admin.users');
 
 // Estado de Pedido
 
