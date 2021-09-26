@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class DepartamentosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.departamentos.index')->only('index');
+        $this->middleware('can:admin.departamentos.create')->only('create', 'update');
+        $this->middleware('can:admin.departamentos.destroy')->only('destroy');
+    }
+
     public function index(){
         return view('departamentos.index');
     }

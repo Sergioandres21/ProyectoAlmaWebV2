@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Models\EstadoPedidos;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
@@ -15,7 +16,7 @@ Route::resource('users', UserController::class)->only(['index', 'edit', 'update'
 
 // Estado de Pedido
 
-Route::get('estadoPedidos', [EstadoPedidosController::class, 'index']);
+Route::get('estadoPedidos', [EstadoPedidosController::class, 'index'])->middleware('can:admin.users.edit');
 Route::get('listar-estados', [EstadoPedidosController::class, 'listarEstado']);
 Route::post('estadoPedidos', [EstadoPedidosController::class, 'store']);
 Route::get('editar-estado/{id}', [EstadoPedidosController::class, 'edit']);
@@ -58,6 +59,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-//Auth::routes();
+Route::get('/user', [HomeController::class, 'getUser']);
+Route::get('/profesional', [HomeController::class, 'getProfesional']);
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

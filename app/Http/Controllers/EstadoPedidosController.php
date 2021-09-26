@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class EstadoPedidosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.estadopedidos.index')->only('index');
+        $this->middleware('can:admin.estadopedidos.create')->only('create', 'update');
+        $this->middleware('can:admin.estadopedidos.destroy')->only('destroy');
+    }
+
     public function index(){
         return view('estadoPedidos.index');
     }

@@ -22,7 +22,14 @@
                 <a href="ProcesoAgenda.html"><i class="icon ion-md-calendar lead mr-2"></i>Agenda</a>
             </li>
             <li class="active">
-                <a href="ProcesoCliente.html"><i class="icon ion-md-people lead mr-2"></i>Clientes</a>
+
+                {{-- Mostrar botones de acuerdo al rol --}}
+                @can('admin.users')
+                    
+                <a href="{{route('admin.users')}}"><i class="icon ion-md-people lead mr-2"></i>Clientes</a>
+
+                @endcan
+
             </li>
             <li>
                 <a href="informes.html"><i class="icon ion-md-paper lead mr-2"></i>Informes</a>
