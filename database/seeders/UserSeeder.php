@@ -17,20 +17,35 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Sergio Andrés',
+            'apellido' => 'Apellido',
             'email' => 'sergio@gmail.com',
-            'password' => bcrypt('sergio')
+            'password' => Hash::make('sergio'),
+            'tipo' => '1',
+            'celular' => '1234567821',
+            'estado' => '1',
+            'imagen' => 'img'
         ])->assignRole('Administrador');
 
         User::create([
             'name' => 'Manuela',
+            'apellido' => 'Apellido',
             'email' => 'manuela@gmail.com',
-            'password' => bcrypt('manuela')
+            'password' => Hash::make('manuela'),
+            'tipo' => '2',
+            'celular' => '1234567893',
+            'estado' => '1',
+            'imagen' => 'img'
         ])->assignRole('Usuario');
 
         User::create([
             'name' => 'Alejandra',
+            'apellido' => 'Apellido',
             'email' => 'alejandra@gmail.com',
-            'password' => bcrypt('alejandra')
+            'password' => hash::make('alejandra'),
+            'tipo' => '3',
+            'celular' => '1234567895',
+            'estado' => '1',
+            'imagen' => 'img'
         ])->assignRole('Profesional');
 
         /* $useradmin=User::create([
@@ -39,7 +54,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin'),
             'fullacces' => 'yes',
             'codigo' => 'adm1',
-        ]);
+        ])->assignRole('Profesional');
 
         $user1=User::create([
             'name' => 'usuario manuela',

@@ -1,0 +1,193 @@
+.navbar {
+    background-color: #FEDCD2;
+    min-height: 100px;
+    font-size: 18px;
+  }
+  
+  .nav-link { color: var(--dark-color); }
+  .nav-link:hover { color: var(--dark-color); }
+  
+  .navbar-toggler { font-size: 40px; }
+  .navbar-toggler:focus { outline: none; }
+  
+  .logo-brand {
+    max-width: 160px;
+    min-width: 160px;
+  }
+
+
+.seccion{
+  margin-top: 130px;
+}
+
+.form {
+	padding: 30px 40px;	
+}
+
+.form-group {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.form-group  label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.form-group input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form-group .custom-select {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	width: 100%;
+}
+
+.form-group input:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-group.success input {
+	border-color: #2ecc71;
+}
+
+.form-group.error input {
+	border-color: #e74c3c;
+}
+
+.form-group.error .custom-select {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-group.error .custom-select {
+	border-color: #e74c3c;
+}
+
+.form-group.success .custom-select {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-group.success .custom-select {
+	border-color: #2ecc71;
+}
+
+.form-group i {
+	visibility: hidden;
+	position: absolute;
+	top: 42px;
+	right: 22px;
+}
+
+.form-group.success.col-sm-6 i.fa-check-circle {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form-group.error.col-sm-6  i.fa-exclamation-circle {
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.form-group small {
+	color: #e74c3c;
+	bottom: 0;
+	left: 18px;
+	visibility: hidden;
+}
+
+.form-group.error.col-sm-6 small {
+	visibility: visible;
+}
+
+/* Custom select */
+
+.custom-select select:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.custom-select.success select {
+	border-color: #2ecc71;
+}
+
+.custom-select.error select {
+	border-color: #e74c3c;
+}
+
+.custom-select i {
+	visibility: hidden;
+	position: absolute;
+	top: 42px;
+	right: 22px;
+}
+
+.custom-select.success i.fa-check-circle {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.custom-select.error i.fa-exclamation-circle {
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.custom-select small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 18px;
+	visibility: hidden;
+}
+
+.custom-select.error.col-sm-6 small {
+	visibility: visible;
+}
+
+.form button {
+	background-color: #8e44ad;
+	border: 2px solid #8e44ad;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+
+/* Estilo formulario */
+.form-content-wrap:first-child{padding-top:60px;}
+.item-wrap{border:2px solid #ccc;
+  border-radius:5px;
+  margin:30px auto;
+  padding:15px 30px 0;
+  width:100%;
+  background-color: #f0f0f0;
+}
+
+  .item-title{
+    color: #F4BD76;
+    font-size:32px;
+    font-weight:bold;
+    margin:0 auto 30px;
+  }
+
+.campos{
+  margin-top: -10px;
+}

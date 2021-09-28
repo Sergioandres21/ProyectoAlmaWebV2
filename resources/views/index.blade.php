@@ -58,7 +58,7 @@
                         </a>
                         </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Vista/Login/login.php"><ion-icon name="log-in-outline" class="mr-2"></ion-icon>Iniciar sesión</a>
+                        <a class="nav-link" href="{{route('login')}}"><ion-icon name="log-in-outline" class="mr-2"></ion-icon>Iniciar sesión</a>
                     </li>
                 </ul>
             </div>
