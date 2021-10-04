@@ -7,34 +7,27 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('can:admin.permisos.index');
+        $this->middleware('can:admin.permisos.create');
+        $this->middleware('can:admin.permisos.edit');
+        $this->middleware('can:admin.permisos.show');
+    }
+
     public function index()
     {
         $permissions = Permission::all();
 
-        return view('permisos.index', compact('permissions'));
+        return view('admin.permisos.index', compact('permissions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('permisos.create');
+        return view('admin.permisos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -44,43 +37,27 @@ class PermissionController extends Controller
 
         $permiso = Permission::create($request->all());
 
-        return redirect()->route('permisos.index')->with('El permiso se registro con éxito');
+        alert()->success('Registro','Permiso creado con éxito');
+
+        return redirect()->route('admin.permisos.index')->with('El permiso se registro con éxito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $permission = Permission::find($id);
 
-        return view('permisos.show')->with('permission', $permission);
+        return view('admin.permisos.show')->with('permission', $permission);
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $permission = Permission::find($id);
 
-        return view('permisos.edit', compact('permission'));
+        return view('admin.permisos.edit', compact('permission'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $permission = Permission::find($id);
@@ -92,21 +69,18 @@ class PermissionController extends Controller
 
         $permission->update($request->only('name', 'description'));
 
-        return redirect()->route('permisos.index')->with('El permiso se actualizó con éxito');
+        alert()->success('Actualización','Permiso actualizado con éxito');
+
+        return redirect()->route('admin.permisos.index')->with('El permiso se actualizó con éxito');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $permission = Permission::find($id);
         
         $permission->delete();
 
-        return redirect()->route('permisos.index')->with('El permiso se eliminó con éxito');
+        return redirect()->route('admin.permisos.index')->with('eliminar','ok');
     }
 }

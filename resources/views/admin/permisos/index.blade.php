@@ -1,6 +1,6 @@
 @extends('layouts.configuracion')
 
-@section('title', 'Listado de roles')
+@section('title', 'Listado de permisos')
     
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
@@ -9,15 +9,15 @@
 
 @section('content')
 
-        <header>
-            <h3 class='text-center'></h3>
-        </header>
-
-        <div class="container caja">   
+            <header>
+                <h3 class='text-center'></h3>
+            </header>
 
             <div class="text-center">
-                <h2>Lista de roles</h2>
+                <h2>Lista de Permisos</h2>
             </div>
+
+            <div class="container caja"> 
 
             @if (session('info'))
             <div class="alert alert-success">
@@ -26,63 +26,68 @@
             @endif
     
             <div class="table-responsive">
-                <table id="roles" class="table table-striped">
-                    <a class="btn btn-secondary btn-sm mb-3" href="{{route('admin.roles.create')}}">Nuevo rol</a>
+                <table id="permisos" class="table table-striped">
+                    <a class="btn btn-secondary btn-sm mb-3" href="{{route('admin.permisos.create')}}">Nuevo Permiso</a>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Rol</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
+                            <th>Nombre del permiso</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                       @foreach ($roles as $role)
+                       @forelse ($permissions as $permission)
                            <tr>
-                               <td>{{$role->id}}</td>
-                               <td>{{$role->name}}</td>
-                               <td width="10px">
-                                   <a href="{{route('admin.roles.edit', $role)}}" class="btn btn-sm btn-primary">Editar</a>
-                               </td>
+                               <td>{{$permission->id}}</td>
+                               <td>{{$permission->name}}</td>
+                               <td>{{$permission->description}}</td>
+                            
+                               <td width="td-actions text-right">
+                                <a href="{{route('admin.permisos.show', $permission->id)}}" class="btn btn-info">Ver</a>
 
-                               <td width="10px">
-                                   <form action="{{route('admin.roles.destroy', $role)}}" method="POST" class="d-inline formulario-eliminar">
+                                   <a href="{{route('admin.permisos.edit', $permission->id)}}" class="btn btn-sm btn-primary">Editar</a>
+
+                                   <form action="{{route('admin.permisos.destroy', $permission->id)}}" method="POST" class="d-inline formulario-eliminar">
                                     @csrf
                                     @method('DELETE')
                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                    </form>
                                </td>
                            </tr>
-                       @endforeach
+                           @empty 
+                           <h1>No existen permisos registrados</h1>
+                       @endforelse
                     </tbody>
                 </table>
-
             </div>
-
+            </div>
+                
 @endsection
 
 @section('scripts')
-        
-
+                    
+            
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
             
-<script>
-    $(document).ready(function(){
-        $('#roles').DataTable({
-            "language": {
+        <script>
+            $(document).ready(function(){
+                $('#permisos').DataTable({
+                    "lengthMenu": [[5,10,50, -1], [5, 10, 50, "Todos"]],
+                    "language": {
                     "url": '/libs/datatables/spanish.json',
-            }
-        });
-    });
-</script>
+                    }
+                });
+            });
+        </script>
 
-@if (session('eliminar') == 'ok')
+        @if (session('eliminar') == 'ok')
         <script>
             Swal.fire(
                 '¡Eliminado!',
-                'El rol se eliminó con éxito.',
+                'El permiso se eliminó con éxito.',
                 'success'
             )
         </script>
@@ -94,7 +99,7 @@
 
                 Swal.fire({
                     title: '¿Estás seguro?',
-                    text: "¡Este rol se eliminará definitivamente!",
+                    text: "¡Este permiso se eliminará definitivamente!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -111,4 +116,7 @@
 
         </script>
 
+</body>
+
+</html>
 @endsection

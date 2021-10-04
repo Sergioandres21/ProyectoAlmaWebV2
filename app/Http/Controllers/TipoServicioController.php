@@ -2,34 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EstadoPedidos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\TipoServicio;
 
-class EstadoPedidosController extends Controller
+class TipoServicioController extends Controller
 {
-/*     public function __construct()
+    public function __construct()
     {
-        $this->middleware('can:admin.estadopedidos.index')->only('index');
-        $this->middleware('can:admin.estadopedidos.create')->only('create', 'update');
-        $this->middleware('can:admin.estadopedidos.destroy')->only('destroy');
-    } */
-
-    public function index(){
-        return view('estadoPedidos.index');
+        $this->middleware('can:admin.tipoServicios.index')->only('index');
+        $this->middleware('can:admin.registrar-tiposervicios.index');
     }
 
-    public function listarEstado(){
-        $estado = EstadoPedidos::all();
+    public function index(){
+        return view('tipoServicios.index');
+    }
+
+    public function listarTiposervicios(){
+        $tipoServicio = TipoServicio::all();
         return response()->json([
-            'estadoPedidos'=>$estado,
+            'tipoServicio'=>$tipoServicio,
         ]);
     }
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'nombre'=>'required|max:50',
-            'estadoPedido'=>'required|digits:1'
+            'estado'=>'required'
         ]);
 
         if ($validator->fails()) {
@@ -38,30 +37,30 @@ class EstadoPedidosController extends Controller
                 'errors'=>$validator->messages(),
             ]);
         }else{
-            $estado = new EstadoPedidos;
-            $estado->NombreEstado = $request->input('nombre');
-            $estado->estadoPedido = $request->input('estadoPedido');
-            $estado->save();
+            $tipoServicio = new TipoServicio;
+            $tipoServicio->nombreTiposervicio = $request->input('nombre');
+            $tipoServicio->estado = $request->input('estado');
+            $tipoServicio->save();
             return response()->json([
                 'status'=>200,
-                'message'=>'Estado Registrado exitosamente',
+                'message'=>'Tipo de servicio Registrado exitosamente',
             ]);
         }   
     }
 
     public function edit($id)
     {
-        $estado = EstadoPedidos::find($id);
+        $tipoServicio = TipoServicio::find($id);
 
-        if ($estado) {
+        if ($tipoServicio) {
             return response()->json([
                 'status'=>200,
-                'estado'=>$estado,
+                'tipoServicio'=>$tipoServicio,
             ]);
         }else{
             return response()->json([
                 'status'=>404,
-                'message'=>'Estado No funciona.'
+                'message'=>'Tipo de servicio No funciona.'
             ]);
         }
         
@@ -70,7 +69,7 @@ class EstadoPedidosController extends Controller
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'nombre'=>'required|max:50',
-            'estadoPedido'=>'required'
+            'estado'=>'required'
         ]);
 
         if ($validator->fails()) {
@@ -80,27 +79,27 @@ class EstadoPedidosController extends Controller
             ]);
         }
         else{
-            $estado = EstadoPedidos::find($id);
+            $tipoServicio = TipoServicio::find($id);
 
-            if ($estado) {
-                $estado->NombreEstado = $request->input('nombre');
-                $estado->estadoPedido = $request->input('estadoPedido');
-                $estado->update();
+            if ($tipoServicio) {
+                $tipoServicio->nombreTiposervicio = $request->input('nombre');
+                $tipoServicio->estado = $request->input('estado');
+                $tipoServicio->update();
                 return response()->json([
                     'status'=>200,
-                    'message'=>'Estado Actualizado exitosamente',
+                    'message'=>'Tipo de servicio Actualizado exitosamente',
                 ]);
             }else{
                 return response()->json([
                     'status'=>404,
-                    'message'=>'Estado No funciona.'
+                    'message'=>'Tipo de servicio No funciona.'
                 ]);
             } 
         }   
     }
 
     public function actualizarestado(Request $request){
-        $estadorol = EstadoPedidos::findOrFail($request->id)->update(['estado' => $request->estado]); 
+        $estadotipoServicio = TipoServicio::findOrFail($request->id)->update(['estado' => $request->estado]); 
 
         if($request->estado == 0)  {
             $nuevoestado = '<br> <button type="button" class="btn btn-sm btn-danger">Inactivo</button>';
@@ -112,12 +111,11 @@ class EstadoPedidosController extends Controller
     }
 
     public function eliminar($id){
-        $estado = EstadoPedidos::find($id);
-        $estado->delete();
+        $tipoServicio = TipoServicio::find($id);
+        $tipoServicio->delete();
         return response()->json([
             'status'=>200,
-            'message'=>'Estado eliminado satisfactoriamente',
+            'message'=>'Tipo servicio eliminado satisfactoriamente',
         ]);
     }
-
 }

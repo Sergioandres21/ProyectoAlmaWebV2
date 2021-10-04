@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EstadoPedidos;
+use App\Models\estadoAgenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class EstadoPedidosController extends Controller
+class EstadoAgendaController extends Controller
 {
 /*     public function __construct()
     {
@@ -16,20 +16,20 @@ class EstadoPedidosController extends Controller
     } */
 
     public function index(){
-        return view('estadoPedidos.index');
+        return view('estadoAgenda.index');
     }
 
-    public function listarEstado(){
-        $estado = EstadoPedidos::all();
+    public function listarEstadoAgenda(){
+        $estadoAgenda = estadoAgenda::all();
         return response()->json([
-            'estadoPedidos'=>$estado,
+            'estadoAgenda'=>$estadoAgenda,
         ]);
     }
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'nombre'=>'required|max:50',
-            'estadoPedido'=>'required|digits:1'
+            'estadoAgenda'=>'required|digits:1'
         ]);
 
         if ($validator->fails()) {
@@ -38,10 +38,10 @@ class EstadoPedidosController extends Controller
                 'errors'=>$validator->messages(),
             ]);
         }else{
-            $estado = new EstadoPedidos;
-            $estado->NombreEstado = $request->input('nombre');
-            $estado->estadoPedido = $request->input('estadoPedido');
-            $estado->save();
+            $estadoAgenda = new estadoAgenda;
+            $estadoAgenda->NombreEstado = $request->input('nombre');
+            $estadoAgenda->estadoAgenda = $request->input('estadoAgenda');
+            $estadoAgenda->save();
             return response()->json([
                 'status'=>200,
                 'message'=>'Estado Registrado exitosamente',
@@ -51,12 +51,12 @@ class EstadoPedidosController extends Controller
 
     public function edit($id)
     {
-        $estado = EstadoPedidos::find($id);
+        $estadoAgenda = estadoAgenda::find($id);
 
-        if ($estado) {
+        if ($estadoAgenda) {
             return response()->json([
                 'status'=>200,
-                'estado'=>$estado,
+                'estado'=>$estadoAgenda,
             ]);
         }else{
             return response()->json([
@@ -70,7 +70,7 @@ class EstadoPedidosController extends Controller
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'nombre'=>'required|max:50',
-            'estadoPedido'=>'required'
+            'estadoAgenda'=>'required'
         ]);
 
         if ($validator->fails()) {
@@ -80,12 +80,13 @@ class EstadoPedidosController extends Controller
             ]);
         }
         else{
-            $estado = EstadoPedidos::find($id);
+            $estado = estadoAgenda::find($id);
 
             if ($estado) {
                 $estado->NombreEstado = $request->input('nombre');
-                $estado->estadoPedido = $request->input('estadoPedido');
+                $estado->estadoAgenda = $request->input('estadoAgenda');
                 $estado->update();
+                
                 return response()->json([
                     'status'=>200,
                     'message'=>'Estado Actualizado exitosamente',
@@ -99,10 +100,10 @@ class EstadoPedidosController extends Controller
         }   
     }
 
-    public function actualizarestado(Request $request){
-        $estadorol = EstadoPedidos::findOrFail($request->id)->update(['estado' => $request->estado]); 
+    public function actualizarEstadoAgenda(Request $request){
+        $estadoAgenda = estadoAgenda::findOrFail($request->id)->update(['estado' => $request->estadoAgenda]); 
 
-        if($request->estado == 0)  {
+        if($request->estadoAgenda == 0)  {
             $nuevoestado = '<br> <button type="button" class="btn btn-sm btn-danger">Inactivo</button>';
         }else{
             $nuevoestado ='<br> <button type="button" class="btn btn-sm btn-success">Activo</button>';
@@ -112,12 +113,11 @@ class EstadoPedidosController extends Controller
     }
 
     public function eliminar($id){
-        $estado = EstadoPedidos::find($id);
-        $estado->delete();
+        $estadoAgenda = estadoAgenda::find($id);
+        $estadoAgenda->delete();
         return response()->json([
             'status'=>200,
             'message'=>'Estado eliminado satisfactoriamente',
         ]);
-    }
-
+    } 
 }

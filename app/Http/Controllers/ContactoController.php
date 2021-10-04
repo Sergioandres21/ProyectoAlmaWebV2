@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.contacto.index')->only('index');
+    }
+
     public function index(){
         $contacto=Contacto::all();
         return view('contactos.index')->with('contacto', $contacto);

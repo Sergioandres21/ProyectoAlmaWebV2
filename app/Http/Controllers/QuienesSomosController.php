@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class QuienesSomosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:admin.quienes-somos.index')->only('index');
+    }
+
     public function index(){
         $quienes=QuienesSomos::all();
         return view('quienesSomos.index')->with('quienes', $quienes);

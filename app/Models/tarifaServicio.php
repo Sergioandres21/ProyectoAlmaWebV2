@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EstadoPedidos extends Model
+class tarifaServicio extends Model
 {
     use HasFactory;
-    protected $tabla = 'estado_pedidos';
+    protected $tabla = 'tarifa_servicios';
     protected $fillable = [
         'id',
-        'NombreEstado',
-        'estadoPedido'
+        'anoTarifa',
+        'resolucion'
     ];
 }

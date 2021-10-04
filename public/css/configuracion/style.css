@@ -83,6 +83,12 @@ a[aria-expanded="true"] {
     background: #F8EEE7;
 }
 
+#sidebar ul li.active1>a,
+a[aria-expanded="true"] {
+    color: #000;
+    background: #fece90;
+}
+
 a[data-toggle="collapse"] {
     position: relative;
 }
