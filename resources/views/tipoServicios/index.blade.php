@@ -33,10 +33,8 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="estadoTipo" class="col-form-label">Estado:</label>
-                                                <select name="estadoTipo" id="estadoTipo" class="estadoTipo form-control">
-                                                    <option value="">Seleccionar...</option>
+                                                <select name="estadoTipo" id="estadoTipo" class="estadoTipo form-control" disabled>
                                                     <option value="1">Activo</option>
-                                                    <option value="0">Inactivo</option>
                                                 </select>
                                             </div>
                                         </div>

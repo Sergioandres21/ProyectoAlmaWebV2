@@ -25,7 +25,6 @@ class HomeController extends Controller
         return view('profesional');
     }
 
-
     public function index()
     {
         return view('home');

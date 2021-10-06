@@ -39,10 +39,8 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="estadoAgenda" class="col-form-label">Estado:</label>
-                                            <select name="estadoAgenda" id="estadoAgenda" class="estadoAgenda form-control">
-                                                <option value="">Seleccionar...</option>
+                                            <select name="estadoAgenda" id="estadoAgenda" class="estadoAgenda form-control" disabled>
                                                 <option value="1">Activo</option>
-                                                <option value="0">Inactivo</option>
                                             </select>
                                         </div>
                                     </div>
@@ -167,9 +165,5 @@
 <script type="text/javascript" src="{{ asset('ajax/estado-agenda/script.js') }}"></script>
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-
-</script>
     
 @endsection

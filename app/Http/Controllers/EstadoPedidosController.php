@@ -28,7 +28,7 @@ class EstadoPedidosController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50',
+            'nombre'=>'required|max:50|unique:estadopedidos',
             'estadoPedido'=>'required|digits:1'
         ]);
 
@@ -69,7 +69,7 @@ class EstadoPedidosController extends Controller
 
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50',
+            'nombre'=>'required|max:50|unique:estadopedidos',
             'estadoPedido'=>'required'
         ]);
 

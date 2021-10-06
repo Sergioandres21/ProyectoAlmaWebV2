@@ -1,6 +1,6 @@
 @extends('layouts.configuracion')
 
-@section('title', 'Listado de permisos')
+@section('title', 'Listado de sucursales')
     
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
@@ -14,7 +14,7 @@
             </header>
 
             <div class="text-center">
-                <h2>Lista de Permisos</h2>
+                <h2>Lista de sucursales</h2>
             </div>
 
             <div class="container caja"> 
@@ -26,41 +26,46 @@
             @endif
     
             <div class="table-responsive">
-                <table id="permisos" class="table table-striped">
-                    <a class="btn btn-secondary btn-sm mb-3" href="{{route('admin.permisos.create')}}">Nuevo Permiso</a>
+                <table id="sucursales" class="table table-striped">
+                    <a class="btn btn-secondary btn-sm mb-3" href="{{route('admin.sucursales.create')}}">Nueva sucursal</a>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre del permiso</th>
-                            <th>Descripción</th>
-                            <th>Acciones</th>
+                            <th>Nombre de la sucursal</th>
+                            <th>Nombre del municipio</th>
+                            <th>Dirección</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                       @foreach ($permissions as $permission)
+                      @foreach ($sucursales as $sucursal)
                            <tr>
-                               <td>{{$permission->id}}</td>
-                               <td>{{$permission->name}}</td>
-                               <td>{{$permission->description}}</td>
-                            
-                               <td width="td-actions text-right">
-                                <a href="{{route('admin.permisos.show', $permission->id)}}" class="btn btn-info">Ver</a>
+                               <td>{{$sucursal->id}}</td>
+                               <td>{{$sucursal->nombreSucursal}}</td>
+                               <td>{{$sucursal->municipios->nombreMunicipio}}</td>
+                               <td>{{$sucursal->direccion}}</td>
 
-                                   <a href="{{route('admin.permisos.edit', $permission->id)}}" class="btn btn-sm btn-primary">Editar</a>
+                               <td width="10px">
+                                <a href="{{route('admin.sucursales.edit', $sucursal)}}" class="btn btn-sm btn-primary">Editar</a>
+                            </td>
 
-                                   <form action="{{route('admin.permisos.destroy', $permission->id)}}" method="POST" class="d-inline formulario-eliminar">
-                                    @csrf
-                                    @method('DELETE')
-                                       <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                   </form>
-                               </td>
+                            <td width="10px">
+                                <form action="{{route('admin.sucursales.destroy', $sucursal)}}" method="POST" class="d-inline formulario-eliminar">
+                                 @csrf
+                                 @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                            </td>
                            </tr>
-                       @endforeach
-                    </tbody>
+                    @endforeach
+                </tbody>
                 </table>
             </div>
             </div>
+
+        </body>
                 
 @endsection
 
@@ -72,7 +77,7 @@
             
         <script>
             $(document).ready(function(){
-                $('#permisos').DataTable({
+                $('#sucursales').DataTable({
                     "lengthMenu": [[5,10,50, -1], [5, 10, 50, "Todos"]],
                     "language": {
                     "url": '/libs/datatables/spanish.json',
@@ -81,11 +86,12 @@
             });
         </script>
 
-        @if (session('eliminar') == 'ok')
+
+@if (session('eliminar') == 'ok')
         <script>
             Swal.fire(
                 '¡Eliminado!',
-                'El permiso se eliminó con éxito.',
+                'La sucursal se eliminó con éxito.',
                 'success'
             )
         </script>
@@ -97,7 +103,7 @@
 
                 Swal.fire({
                     title: '¿Estás seguro?',
-                    text: "¡Este permiso se eliminará definitivamente!",
+                    text: "¡Esta sucursal se eliminará definitivamente!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -113,8 +119,6 @@
             });
 
         </script>
-
-</body>
 
 </html>
 @endsection

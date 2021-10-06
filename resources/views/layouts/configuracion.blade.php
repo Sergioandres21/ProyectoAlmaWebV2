@@ -46,8 +46,8 @@
                     <li class="{{ request()->routeIs('departamentos') ? 'active' : ''}}">
                         <a href="{{ route('departamentos') }}"><i class="icon ion-md-train mr-2"></i>Departamentos</a>
                     </li>
-                    <li>
-                        <a href="#"><i class="icon ion-md-bus mr-2"></i>Municipios</a>
+                    <li class="{{ request()->routeIs('admin.municipios.index') ? 'active' : ''}}">
+                        <a href="{{ route('admin.municipios.index') }}"><i class="icon ion-md-bus mr-2"></i>Municipios</a>
                     </li>
                     <li class="{{ request()->routeIs('estadoPedidos') ? 'active' : ''}}">
                         <a href="{{ route('estadoPedidos') }}"><i class="icon ion-md-cart lead mr-2"></i>Pedidos</a>
@@ -102,8 +102,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li> 
-                        <a href="#"><i class="icon ion-md-browsers mr-2"></i>Razón social</a>
+                    <li class="{{ request()->routeIs('admin.sucursales.index') ? 'active' : ''}}"> 
+                        <a href="{{ route('admin.sucursales.index') }}"><i class="icon ion-md-browsers mr-2"></i>Centro de estética</a>
                     </li>
                     <li class="{{ request()->routeIs('quienes-somos') ? 'active' : ''}}">
                         <a href="{{ route('quienes-somos') }}"><i class="icon ion-md-desktop mr-2"></i>Home formularios</a>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstadoPedidosTable extends Migration
+class CreateMunicipiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateEstadoPedidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('estado_pedidos', function (Blueprint $table) {
-            $table->id();
-            $table->string('NombreEstado')->unique();
-            $table->integer('estadoPedido');
+        Schema::create('municipios', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->id();    
+            $table->foreignId('id_departamento')->constrained('departamentos');
+            $table->string('nombreMunicipio');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateEstadoPedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado_pedidos');
+        Schema::dropIfExists('municipios');
     }
 }

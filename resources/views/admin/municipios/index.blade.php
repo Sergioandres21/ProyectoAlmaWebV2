@@ -1,6 +1,6 @@
 @extends('layouts.configuracion')
 
-@section('title', 'Listado de permisos')
+@section('title', 'Listado de municipios')
     
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
@@ -14,7 +14,7 @@
             </header>
 
             <div class="text-center">
-                <h2>Lista de Permisos</h2>
+                <h2>Lista de Municipios</h2>
             </div>
 
             <div class="container caja"> 
@@ -26,54 +26,56 @@
             @endif
     
             <div class="table-responsive">
-                <table id="permisos" class="table table-striped">
-                    <a class="btn btn-secondary btn-sm mb-3" href="{{route('admin.permisos.create')}}">Nuevo Permiso</a>
+                <table id="municipios" class="table table-striped">
+                    <a class="btn btn-secondary btn-sm mb-3" href="{{route('admin.municipios.create')}}">Nuevo municipio</a>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre del permiso</th>
-                            <th>Descripción</th>
-                            <th>Acciones</th>
+                            <th>Nombre del municipio</th>
+                            <th>Nombre del departamento</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                       @foreach ($permissions as $permission)
+                      @foreach ($municipios as $municipio)
                            <tr>
-                               <td>{{$permission->id}}</td>
-                               <td>{{$permission->name}}</td>
-                               <td>{{$permission->description}}</td>
-                            
-                               <td width="td-actions text-right">
-                                <a href="{{route('admin.permisos.show', $permission->id)}}" class="btn btn-info">Ver</a>
+                               <td>{{$municipio->id}}</td>
+                               <td>{{$municipio->nombreMunicipio}}</td>
+                               <td>{{$municipio->departamentos->nombre}}</td>
 
-                                   <a href="{{route('admin.permisos.edit', $permission->id)}}" class="btn btn-sm btn-primary">Editar</a>
 
-                                   <form action="{{route('admin.permisos.destroy', $permission->id)}}" method="POST" class="d-inline formulario-eliminar">
-                                    @csrf
-                                    @method('DELETE')
-                                       <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                   </form>
-                               </td>
+                               <td width="10px">
+                                <a href="{{route('admin.municipios.edit', $municipio)}}" class="btn btn-sm btn-primary">Editar</a>
+                            </td>
+
+                            <td width="10px">
+                                <form action="{{route('admin.municipios.destroy', $municipio)}}" method="POST" class="d-inline formulario-eliminar">
+                                 @csrf
+                                 @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                            </td>
                            </tr>
-                       @endforeach
-                    </tbody>
+                    @endforeach
+                </tbody>
                 </table>
             </div>
             </div>
+
+        </body>
                 
 @endsection
 
 @section('scripts')
-                    
-            
+                        
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
             
         <script>
             $(document).ready(function(){
-                $('#permisos').DataTable({
-                    "lengthMenu": [[5,10,50, -1], [5, 10, 50, "Todos"]],
+                $('#municipios').DataTable({
                     "language": {
                     "url": '/libs/datatables/spanish.json',
                     }
@@ -81,11 +83,12 @@
             });
         </script>
 
-        @if (session('eliminar') == 'ok')
+
+@if (session('eliminar') == 'ok')
         <script>
             Swal.fire(
                 '¡Eliminado!',
-                'El permiso se eliminó con éxito.',
+                'El municipio se eliminó con éxito.',
                 'success'
             )
         </script>
@@ -97,7 +100,7 @@
 
                 Swal.fire({
                     title: '¿Estás seguro?',
-                    text: "¡Este permiso se eliminará definitivamente!",
+                    text: "¡Este municipio se eliminará definitivamente!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -113,8 +116,6 @@
             });
 
         </script>
-
-</body>
 
 </html>
 @endsection

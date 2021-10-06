@@ -15,7 +15,7 @@ class CreateTipoServiciosTable extends Migration
     {
         Schema::create('tipo_servicios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreTiposervicio');
+            $table->string('nombreTiposervicio')->unique();
             $table->integer('estado');
             $table->timestamps();
         });

@@ -41,10 +41,8 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="estado" class="col-form-label">Estado:</label>
-                                                <select name="estado" id="estado" class="estado form-control">
-                                                    <option value="">Seleccionar...</option>
+                                                <select name="estado" id="estado" class="estado form-control" disabled>
                                                     <option value="1">Activo</option>
-                                                    <option value="0">Inactivo</option>
                                                 </select>
                                             </div>
                                         </div>

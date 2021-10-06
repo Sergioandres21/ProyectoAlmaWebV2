@@ -46,7 +46,7 @@ class ContactoController extends Controller
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'whatsapp'=>'required|max:500',
-            'email'=>'required|max:500|unique:contactos',
+            'email'=>'required|max:60|unique:contactos',
             'instagram'=>'required|max:500',
             'descripcion'=>'max:200'
         ]);

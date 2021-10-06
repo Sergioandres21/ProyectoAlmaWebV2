@@ -135,9 +135,3 @@ $(document).on('click', '.edit_contacto', function (e) {
     });
 
 }); 
-
-$(document).ready(function () {
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
-});

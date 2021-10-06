@@ -27,8 +27,8 @@ class TarifaServicioController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'anotarifa'=>'required|digits:4',
-            'resolucion'=>'required|max:100'
+            'anotarifa'=>'required|digits:4|unique:tarifa_servicios',
+            'resolucion'=>'required|max:100|unique:tarifa_servicios'
         ]);
 
         if ($validator->fails()) {
