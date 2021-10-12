@@ -123,7 +123,7 @@ $(document).ready(function () {
                         $('#success_message').addClass('alert alert-danger');
                         $('#success_message').text(response.message);
                     }else{
-                        $('#edit_nombre').val(response.estado.NombreEstado);
+                        $('#edit_nombreEstado').val(response.estado.NombreEstado);
                         $('#edit_estadoAgenda').val(response.estado.estadoAgenda);
                         $('#edit_estado_id').val(est_id);
                     }
@@ -145,7 +145,7 @@ $(document).ready(function () {
 
         var est_id = $('#edit_estado_id').val();
         var data = {
-            'nombre' : $('#edit_nombre').val(),
+            'NombreEstado' : $('#edit_nombreEstado').val(),
             'estadoAgenda' : $('#edit_estadoAgenda').val()
         }
 
@@ -203,7 +203,7 @@ $(document).ready(function () {
     $(document).on('click', '.add_estadoagenda', function (e){
         e.preventDefault();
         var data = {
-            'nombre': $('.nombre').val(),
+            'NombreEstado': $('.NombreEstado').val(),
             'estadoAgenda': $('.estadoAgenda').val()
         }
 

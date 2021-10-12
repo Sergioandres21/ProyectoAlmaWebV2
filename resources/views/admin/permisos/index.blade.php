@@ -45,7 +45,7 @@
                                <td>{{$permission->description}}</td>
                             
                                <td width="td-actions text-right">
-                                <a href="{{route('admin.permisos.show', $permission->id)}}" class="btn btn-info">Ver</a>
+                                <a href="{{route('admin.permisos.show', $permission->id)}}" class="btn btn-info btn-sm">Ver</a>
 
                                    <a href="{{route('admin.permisos.edit', $permission->id)}}" class="btn btn-sm btn-primary">Editar</a>
 

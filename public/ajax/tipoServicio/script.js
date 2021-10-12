@@ -128,7 +128,7 @@ $(document).ready(function () {
 
         var tipo_id = $('#edit_tiposervicio_id').val();
         var data = {
-            'nombre' : $('#edit_nombre').val(),
+            'nombreTiposervicio' : $('#edit_nombre').val(),
             'estado' : $('#edit_estado').val()
         }
 
@@ -184,7 +184,7 @@ $(document).ready(function () {
     $(document).on('click', '.add_tiposervicio', function (e){
         e.preventDefault();
         var data = {
-            'nombre': $('.nombre').val(),
+            'nombreTiposervicio': $('.nombre').val(),
             'estado': $('.estadoTipo').val(),
         }
 

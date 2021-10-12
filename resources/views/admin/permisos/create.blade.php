@@ -41,7 +41,8 @@
                             @endif
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                        <button type="submit" class="btn btn-primary btn-sm mt-3">Guardar</button>
+                        <a href="{{ route('admin.permisos.index') }}" class="btn btn-secondary btn-sm mt-3">Volver al inicio</a>
                     </div>    
                 </form>
             </div>

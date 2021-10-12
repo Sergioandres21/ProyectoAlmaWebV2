@@ -68,7 +68,7 @@ class TarifaServicioController extends Controller
 
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'anoTarifa'=>'required|digits:4',
+            'anoTarifa'=>'required|digits:4|unique:tarifa_servicios',
             'resolucion'=>'required|max:100'
         ]);
 

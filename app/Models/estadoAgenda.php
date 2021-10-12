@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class estadoAgenda extends Model
+class estadoagenda extends Model
 {
     use HasFactory;
-    protected $tabla = 'estado_agendas';
+    protected $tabla = 'estadoagendas';
     protected $fillable = [
         'id',
         'NombreEstado',

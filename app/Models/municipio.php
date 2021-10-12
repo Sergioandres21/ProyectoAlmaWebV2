@@ -22,4 +22,8 @@ class municipio extends Model
     public function departamentos(){
         return $this->belongsTo(Departamentos::class, 'id_departamento');
     }
+
+    public function proveedores(){
+        return $this->hasMany(proveedores::class, 'numeroIdentificacion');
+    }
 }

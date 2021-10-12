@@ -11,9 +11,10 @@ use App\Http\Controllers\QuienesSomosController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ContactoController;
-use App\Http\Controllers\EstadoAgendaController;
+use App\Http\Controllers\EstadoagendaController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\SucursalesController;
 use App\Http\Controllers\TarifaServicioController;
 use App\Http\Controllers\TipoServicioController;
@@ -104,6 +105,8 @@ Auth::routes();
 Route::resource('municipios', MunicipioController::class)->names('admin.municipios');
 
 Route::resource('sucursales', SucursalesController::class)->names('admin.sucursales');
+
+Route::resource('proveedores', ProveedoresController::class)->names('admin.proveedores');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

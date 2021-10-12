@@ -27,9 +27,9 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="nombre" class="col-form-label">Nombre del estado del pedido:</label>
-                                                <input type="text" class="nombre form-control" id="nombre"
-                                                    name="nombre">
+                                                <label for="NombreEstado" class="col-form-label">Nombre del estado del pedido:</label>
+                                                <input type="text" class="NombreEstado form-control" id="NombreEstado"
+                                                    name="NombreEstado">
                                             </div>
                                         </div>
                                     <div class="col-12">
@@ -73,7 +73,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="nombre" class="col-form-label">Nombre del estado del pedido:</label>
-                                                <input type="text" class="edit_nombre form-control" id="edit_nombre"
+                                                <input type="text" class="NombreEstado form-control" id="edit_nombre"
                                                     name="edit_nombre">
                                             </div>
                                         </div>

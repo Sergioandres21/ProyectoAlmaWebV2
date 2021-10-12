@@ -83,7 +83,6 @@
             });
         </script>
 
-
 @if (session('eliminar') == 'ok')
         <script>
             Swal.fire(

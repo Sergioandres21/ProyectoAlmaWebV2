@@ -53,7 +53,8 @@
                                 </div>
                                 <div class="card-footer">
                                   <div class="button-container">
-                                    <button class="btn btn-sm btn-primary">Editar</button>
+                                    <button class="btn btn-sm btn-primary btn-sm">Editar</button>
+                                    <a href="{{ route('admin.permisos.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
                                   </div>
                                 </div>
                               </div>

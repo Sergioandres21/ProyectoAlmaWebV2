@@ -145,7 +145,7 @@ $(document).ready(function () {
 
         var est_id = $('#edit_esta_id').val();
         var data = {
-            'nombre' : $('#edit_nombre').val(),
+            'NombreEstado' : $('#edit_nombre').val(),
             'estadoPedido' : $('#edit_estadoPedido').val()
         }
 
@@ -194,14 +194,13 @@ $(document).ready(function () {
                 }
                 
             });
-
     });
 
 
     $(document).on('click', '.add_estado', function (e){
         e.preventDefault();
         var data = {
-            'nombre': $('.nombre').val(),
+            'NombreEstado': $('.NombreEstado').val(),
             'estadoPedido': $('.estadoPedido').val()
         }
 

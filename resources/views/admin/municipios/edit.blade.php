@@ -20,7 +20,10 @@
 
                 @include('admin.municipios.partials.form')
 
-                {!! Form::submit('Actualizar Municipio', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Actualizar Municipio', ['class' => 'btn btn-primary btn-sm']) !!}
+
+                <a href="{{ route('admin.municipios.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
+
                 {!! Form::close() !!}
             </div>
         </div>

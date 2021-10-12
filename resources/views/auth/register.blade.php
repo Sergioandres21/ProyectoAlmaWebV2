@@ -185,8 +185,7 @@
                                             <button type="submit" class="btn btn-primary btn-lg">
                                                 {{ __('Registrar') }}
                                             </button>
-                                            <button type="submit" id="submit"
-                                                class="btn btn-secondary btn-lg"></i>Cancelar</button>
+                                            <a href="{{ route('login') }}" class="btn btn-secondary btn-lg">Volver al inicio</a>
                                         </div>
 
                                     </div>

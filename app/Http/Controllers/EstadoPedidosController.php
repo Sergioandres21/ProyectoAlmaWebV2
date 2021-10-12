@@ -28,7 +28,7 @@ class EstadoPedidosController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50|unique:estadopedidos',
+            'NombreEstado'=>'required|max:50|unique:estado_pedidos',
             'estadoPedido'=>'required|digits:1'
         ]);
 
@@ -39,7 +39,7 @@ class EstadoPedidosController extends Controller
             ]);
         }else{
             $estado = new EstadoPedidos;
-            $estado->NombreEstado = $request->input('nombre');
+            $estado->NombreEstado = $request->input('NombreEstado');
             $estado->estadoPedido = $request->input('estadoPedido');
             $estado->save();
             return response()->json([
@@ -69,7 +69,7 @@ class EstadoPedidosController extends Controller
 
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50|unique:estadopedidos',
+            'NombreEstado'=>'required|max:50|unique:estado_pedidos',
             'estadoPedido'=>'required'
         ]);
 
@@ -83,7 +83,7 @@ class EstadoPedidosController extends Controller
             $estado = EstadoPedidos::find($id);
 
             if ($estado) {
-                $estado->NombreEstado = $request->input('nombre');
+                $estado->NombreEstado = $request->input('NombreEstado');
                 $estado->estadoPedido = $request->input('estadoPedido');
                 $estado->update();
                 return response()->json([

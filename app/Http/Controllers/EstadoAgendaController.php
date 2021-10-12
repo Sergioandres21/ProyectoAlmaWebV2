@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\estadoAgenda;
 use Illuminate\Http\Request;
+use App\Models\estadoagenda;
 use Illuminate\Support\Facades\Validator;
 
-class EstadoAgendaController extends Controller
+class EstadoagendaController extends Controller
 {
 /*     public function __construct()
     {
@@ -20,7 +20,7 @@ class EstadoAgendaController extends Controller
     }
 
     public function listarEstadoAgenda(){
-        $estadoAgenda = estadoAgenda::all();
+        $estadoAgenda = estadoagenda::all();
         return response()->json([
             'estadoAgenda'=>$estadoAgenda,
         ]);
@@ -28,25 +28,32 @@ class EstadoAgendaController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50',
+            'NombreEstado'=>'required|max:50|unique:estadoagendas',
             'estadoAgenda'=>'required|digits:1'
         ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'status'=>400,
-                'errors'=>$validator->messages(),
-            ]);
-        }else{
-            $estadoAgenda = new estadoAgenda;
-            $estadoAgenda->NombreEstado = $request->input('nombre');
-            $estadoAgenda->estadoAgenda = $request->input('estadoAgenda');
-            $estadoAgenda->save();
-            return response()->json([
-                'status'=>200,
-                'message'=>'Estado Registrado exitosamente',
-            ]);
-        }   
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status'=>400,
+                    'errors'=>$validator->messages(),
+                ]);
+            }else{
+                $estadoAgenda = new estadoagenda;
+                $estadoAgenda->NombreEstado = $request->input('NombreEstado');
+                $estadoAgenda->estadoAgenda = $request->input('estadoAgenda');
+                $estadoAgenda->save();
+                return response()->json([
+                    'status'=>200,
+                    'message'=>'Estado Registrado exitosamente',
+                ]);
+            } 
+
+/*         try {
+        } catch (Exception $th) {
+            echo "<h1>El nombre no se encuentra disponible</h1>".$th;
+            echo "<script>alert('El nombre no se encuentra disponible')</script>";
+        } */
     }
 
     public function edit($id)
@@ -69,7 +76,7 @@ class EstadoAgendaController extends Controller
 
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50',
+            'NombreEstado'=>'required|max:50|unique:estadoagendas',
             'estadoAgenda'=>'required'
         ]);
 
@@ -83,7 +90,7 @@ class EstadoAgendaController extends Controller
             $estado = estadoAgenda::find($id);
 
             if ($estado) {
-                $estado->NombreEstado = $request->input('nombre');
+                $estado->NombreEstado = $request->input('NombreEstado');
                 $estado->estadoAgenda = $request->input('estadoAgenda');
                 $estado->update();
                 
@@ -119,5 +126,5 @@ class EstadoAgendaController extends Controller
             'status'=>200,
             'message'=>'Estado eliminado satisfactoriamente',
         ]);
-    } 
+    }
 }

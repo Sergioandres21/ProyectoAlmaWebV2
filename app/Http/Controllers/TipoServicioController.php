@@ -27,7 +27,7 @@ class TipoServicioController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50|unique:tipo_servicios',
+            'nombreTiposervicio'=>'required|max:50|unique:tipo_servicios',
             'estado'=>'required'
         ]);
 
@@ -38,7 +38,7 @@ class TipoServicioController extends Controller
             ]);
         }else{
             $tipoServicio = new TipoServicio;
-            $tipoServicio->nombreTiposervicio = $request->input('nombre');
+            $tipoServicio->nombreTiposervicio = $request->input('nombreTiposervicio');
             $tipoServicio->estado = $request->input('estado');
             $tipoServicio->save();
             return response()->json([
@@ -68,7 +68,7 @@ class TipoServicioController extends Controller
 
     public function actualizar(Request $request, $id){
         $validator = Validator::make($request->all(), [
-            'nombre'=>'required|max:50|unique:tipo_servicios',
+            'nombreTiposervicio'=>'required|max:50|unique:tipo_servicios',
             'estado'=>'required'
         ]);
 
@@ -82,7 +82,7 @@ class TipoServicioController extends Controller
             $tipoServicio = TipoServicio::find($id);
 
             if ($tipoServicio) {
-                $tipoServicio->nombreTiposervicio = $request->input('nombre');
+                $tipoServicio->nombreTiposervicio = $request->input('nombreTiposervicio');
                 $tipoServicio->estado = $request->input('estado');
                 $tipoServicio->update();
                 return response()->json([

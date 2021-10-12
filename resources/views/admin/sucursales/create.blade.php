@@ -20,7 +20,10 @@
 
                     @include('admin.sucursales.partials.form')
 
-                    {!! Form::submit('Crear Sucursal', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Crear Sucursal', ['class' => 'btn btn-primary btn-sm']) !!}
+
+                    <a href="{{ route('admin.sucursales.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
+
                 {!! Form::close() !!}
 
                 </div>
