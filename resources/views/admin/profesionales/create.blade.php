@@ -1,6 +1,6 @@
 @extends('layouts.configuracion')
 
-@section('title', 'Crear Proveedor')
+@section('title', 'Crear Profesional')
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
@@ -10,13 +10,13 @@
 @section('content')
 
         <header>
-            <h3 class='text-center'>Crear nuevo Proveedor</h3>
+            <h3 class='text-center'>Crear nuevo Profesional</h3>
         </header>
 
         <div class="card">
             <div class="card-body">
 
-                {!! Form::open(['route' => 'admin.proveedores.store']) !!}
+                {!! Form::open(['route' => 'admin.profesionales.store']) !!}
 
                 <div class="form-group">
                     {!! Form::label('numeroIdentificacion', 'Número identificación:') !!}
@@ -90,17 +90,6 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('telefono', 'Teléfono:') !!}
-                    {!! Form::text('telefono', null, ['class' => 'form-control', 'placeholder' => 'ingrese el teléfono']) !!}
-                
-                    @error('telefono')
-                        <small class="text-danger">
-                            {{$message}}
-                        </small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
                     {!! Form::label('celular', 'Celular:') !!}
                     {!! Form::text('celular', null, ['class' => 'form-control', 'placeholder' => 'ingrese el celular']) !!}
                 
@@ -136,9 +125,9 @@
                     @enderror
                 </div>
 
-                    {!! Form::submit('Crear Proveedor', ['class' => 'btn btn-primary btn-sm']) !!}
+                    {!! Form::submit('Crear Profesional', ['class' => 'btn btn-primary btn-sm']) !!}
 
-                    <a href="{{ route('admin.proveedores.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
+                    <a href="{{ route('admin.profesionales.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
 
                 {!! Form::close() !!}
 
@@ -152,15 +141,5 @@
 
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
-            
-<script>
-    $(document).ready(function(){
-        $('#usuarios').DataTable({
-            "language": {
-                    "url": '/libs/datatables/spanish.json',
-            }
-        });
-    });
-</script>
 
 @endsection

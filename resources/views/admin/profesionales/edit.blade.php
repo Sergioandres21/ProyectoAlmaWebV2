@@ -1,6 +1,6 @@
 @extends('layouts.configuracion')
 
-@section('title', 'Crear Proveedor')
+@section('title', 'Editar Profesional')
 
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css">
@@ -10,13 +10,13 @@
 @section('content')
 
         <header>
-            <h3 class='text-center'>Crear nuevo Proveedor</h3>
+            <h3 class='text-center'>Editar Profesional</h3>
         </header>
 
         <div class="card">
             <div class="card-body">
 
-                {!! Form::open(['route' => 'admin.proveedores.store']) !!}
+                {!! Form::model($profesionale, ['route' => ['admin.profesionales.update', $profesionale], 'method' => 'put']) !!}
 
                 <div class="form-group">
                     {!! Form::label('numeroIdentificacion', 'Número identificación:') !!}
@@ -43,10 +43,9 @@
                 <div class="form-group">
                     <label for="tipoDocumento" class="col-form-label">Tipo de identificación:</label>
                     <select class="form-control" id="tipoDocumento" name="tipoDocumento">
-                        <Option value="">Seleccionar...</Option>
-                        <option value="CC">C.C</option>
-                        <option value="CE">C.E</option>
-                        <option value="TI">T.I</option>
+                        <option value="CC" {{ $profesionale->tipoDocumento == "CC" ? 'selected' : '' }}>C.C</option>
+                        <option value="CE" {{ $profesionale->tipoDocumento == "CE" ? 'selected' : '' }}>C.E</option>
+                        <option value="TI" {{ $profesionale->tipoDocumento == "TI" ? 'selected' : '' }}>T.I</option>
                     </select>
                 
                     @error('tipoDocumento')
@@ -90,17 +89,6 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('telefono', 'Teléfono:') !!}
-                    {!! Form::text('telefono', null, ['class' => 'form-control', 'placeholder' => 'ingrese el teléfono']) !!}
-                
-                    @error('telefono')
-                        <small class="text-danger">
-                            {{$message}}
-                        </small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
                     {!! Form::label('celular', 'Celular:') !!}
                     {!! Form::text('celular', null, ['class' => 'form-control', 'placeholder' => 'ingrese el celular']) !!}
                 
@@ -125,8 +113,8 @@
                 <div class="form-group">
                     <label for="estado" class="col-form-label">Estado:</label>
                     <select class="form-control" name="estado" id="estado">
-                        <option value="">Seleccionar...</option>
-                        <option value="1">Activo</option>
+                        <option value="1" {{ $profesionale->estado == "1" ? 'selected' : '' }}>Activo</option>
+                        <option value="0" {{ $profesionale->estado == "0" ? 'selected' : '' }}>Inactivo</option>
                     </select>
                 
                     @error('estado')
@@ -136,9 +124,9 @@
                     @enderror
                 </div>
 
-                    {!! Form::submit('Crear Proveedor', ['class' => 'btn btn-primary btn-sm']) !!}
+                    {!! Form::submit('Actualizar Profesional', ['class' => 'btn btn-primary btn-sm']) !!}
 
-                    <a href="{{ route('admin.proveedores.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
+                    <a href="{{ route('admin.profesionales.index') }}" class="btn btn-secondary btn-sm">Volver al inicio</a>
 
                 {!! Form::close() !!}
 

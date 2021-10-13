@@ -26,4 +26,8 @@ class municipio extends Model
     public function proveedores(){
         return $this->hasMany(proveedores::class, 'numeroIdentificacion');
     }
+
+    public function profesionales(){
+        return $this->hasMany(profesionales::class, 'numeroIdentificacion');
+    }
 }

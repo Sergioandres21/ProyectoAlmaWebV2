@@ -14,6 +14,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\EstadoagendaController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfesionalesController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\SucursalesController;
 use App\Http\Controllers\TarifaServicioController;
@@ -107,6 +108,8 @@ Route::resource('municipios', MunicipioController::class)->names('admin.municipi
 Route::resource('sucursales', SucursalesController::class)->names('admin.sucursales');
 
 Route::resource('proveedores', ProveedoresController::class)->names('admin.proveedores');
+
+Route::resource('profesionales', ProfesionalesController::class)->names('admin.profesionales');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
